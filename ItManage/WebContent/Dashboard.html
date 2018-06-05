@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DashBoard</title>
+ <link rel="stylesheet" href="css/overbootstrap.min.css">
+  
+ <script src="js/overjquery.min.js"></script>
+   <script src="js/overbootstrap.min.js"></script>
+<style type="text/css">
+
+
+
+#datatable{
+	width:1136px;
+}
+
+#datatable td{
+	padding:10px;
+}
+
+.statistic{
+	float:left;
+	width:250px;
+	height:150px;
+	margin-right:25px;
+	text-align:center;
+	background-color: #fcf5e8;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	border:1px solid #ccc;
+	-webkit-box-shadow: 0px 10px 62px -25px rgba(0,0,0,0.7);
+-moz-box-shadow: 0px 10px 62px -25px rgba(0,0,0,0.7);
+box-shadow: 0px 10px 62px -25px rgba(0,0,0,0.7);
+}
+
+.title{
+	width:255px;
+	margin-top:-2px;
+	margin-left:-2px;
+	padding:10px 0;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	color: #ffffff;
+	font-family: 'Barlow Condensed', sans-serif;
+	text-transform:uppercase;
+	font-weight:500;
+	background-color: #66b8ff;
+	-webkit-box-shadow: 0px 10px 51px -14px rgba(0,0,0,0.7);
+-moz-box-shadow: 0px 10px 51px -14px rgba(0,0,0,0.7);
+box-shadow: 0px 10px 51px -14px rgba(0,0,0,0.7);
+}
+
+.numbers{
+	width:250px;
+	padding:2px 0px 0px 0px;
+	color: #102c58;
+	font-size:80px;
+	font-family: 'Barlow Condensed', sans-serif;
+}
+
+.statistic:hover .title{
+	background-color:#183e7a;
+	transition: 0.2s;
+}
+
+.statistic:hover .numbers{
+	color:#183e7a;
+	transition: 0.2s;
+}
+
+</style>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	var e=0;
+	var d=0
+	var dp=0;
+	var te=0;
+	var pr=0;
+		
+	$.get("GetCount",function(result){
+		//debugger;
+	//console.log(result)	;
+	$.each(result,function( key,value ) {
+			 //console.log( key + ": " + value );
+			 if(key=="Records"){
+			  $.each(value,function( i,j ) {
+	  		 //console.log( i + ": " + j.div_name );
+			                 $("#div").text(j.div);     	  
+			                 $("#dep").text(j.dep);
+			                 $("#team").text(j.teams);
+			                 $("#emp").text(j.emp);
+			                 $("#pro").text(j.pro);     	  
+			                 $("#cpro").text(j.cpro);     	  
+			                 $("#inpro").text(j.inpro);     	  
+			                 $("#ttask").text(j.task);     	  
+			          		 
+			          		 
+			                  e=j.emp;
+			             	 d=j.div;
+			             	 dp=j.dep;
+			             	 te=j.teams;
+			             	 pr=j.pro;
+			          		 
+				  });
+			     } 
+			 
+
+				$("#s").on('change',function(){
+					var style=this.value;
+					//alert(style);
+					
+
+						var chart = new CanvasJS.Chart("chartContainer", {
+							theme: "light2", // "light2", "dark1", "dark2"
+							animationEnabled: true, // change to true	 	
+							title:{
+								text: ""
+							},
+							data: [
+							{
+								// Change type to "bar", "area", "spline", "pie",etc.
+								type: ""+style+"",
+								dataPoints: [
+									{ label: "Employess",  y:  e},
+									{ label: "Divisions", y: d  },
+									{ label: "Departments", y: dp  },
+									{ label: "Teams",  y: te  },
+									{ label: "Projects",  y: pr  }
+								]
+							}
+							]
+						});
+						chart.render();
+
+
+					
+					
+					
+				});
+				
+				
+
+			 
+			  });
+	});
+
+
+
+	$.get("GetProjectNames",function(result){
+		//debugger;
+	//console.log(result)	;
+	$.each(result,function( key,value ) {
+			 //console.log( key + ": " + value );
+			 if(key=="Records"){
+			  $.each(value,function( i,j ) {
+	  		 //console.log( i + ": " + j.div_name );
+				  $("#sProject").append(
+					        $('<option value='+j.p_id+'>'+j.p_name+'</option>')
+					    );	 
+				  });
+			     } 
+			  });
+	});
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+ $("#sProject").on('change',function(){
+
+	 var task=0;
+	  var emp=0;
+		 var inpro=0;
+		 var cpro=0;
+	 
+		 var id=this.value;
+      
+	// set task count
+	  
+			$.get("GetTaskAllList",function(result){
+				//debugger;
+			//console.log(result)	;
+			$.each(result,function( key,value ) {
+					 //console.log( key + ": " + value );
+					 if(key=="Records"){
+					
+						 $.each(value,function( i,j ) {
+			  		//check contions
+							 if(id==j.pro_id)
+								 {
+								  task++;
+								 }
+							 if(id==j.pro_id && j.status=="Inprogress")
+								 {
+								 inpro++;
+								 
+								 }
+							 if(id==j.pro_id && j.status=="Completed")
+							 {
+							 cpro++;
+							 
+							 }
+							 
+					  //end contions		 
+						  });
+						 
+						  $("#ptask").text(task);
+                          $("#pinpro").text(inpro);
+                          $("#ctask").text(cpro);
+							//alert(task);
+					     } 
+					  });
+			});
+			
+		//set emp count
+		
+			$.get("GetProjectEmpDetails",function(result){
+				
+			$.each(result,function( key,value ) {
+					  if(key=="Records"){
+					
+						 $.each(value,function( i,j ) {
+			  		
+							 if(id==j.p_id)
+								 {
+								  emp++;
+								 }
+							 
+						  });
+						 
+						  $("#pemp").text(emp);
+
+							//alert(task);
+					     } 
+					  });
+			});
+			
+			
+			
+			
+			
+ });
+	
+	
+	
+	
+});
+
+</script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" id="name" href="#">KGISL</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+       
+          <li><a href="Dashboard.html">DashBoard</a></li>
+      
+        <li><a href="ViewEmployee.html">ViewEmployee</a></li>
+      
+       <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">AddNew
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="admin.html">Division</a></li>
+          <li><a href="registration.html">Employee</a></li>
+         
+        </ul>
+      </li>
+      
+      
+       <li><a href="index.html">Logout</a></li>
+        <!--  
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="updateProfile.html">Edit Profile</a></li>
+          
+        </ul>
+      </li>
+        -->
+    </ul>
+  </div>
+</nav>
+
+
+
+<div class="container">
+  
+  <div class="panel panel-default">
+    <div class="panel-heading" style="color:black; font-size:200%;"><center>KGISL</center></div>
+    <div class="panel-body">
+    
+       
+    
+    
+    
+    
+    
+    
+<center>
+<table id="datatable" border="0">
+	<tr>
+		<td width="100%">
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Total Division</div>
+				<div class="numbers" id="div"></div>
+			</div>
+			</a>
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Total Departments</div>
+				<div class="numbers" id="dep"></div>
+			</div>
+			</a>
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Total Teams</div>
+				<div class="numbers" id="team"></div>
+			</div>
+			</a>
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Total Employess</div>
+				<div class="numbers" id="emp"></div>
+			</div>
+			</a>
+			<br><br>
+			
+     	</td>
+	</tr>
+		<tr>
+		<td width="100%">
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Total Projects</div>
+				<div class="numbers" id="pro"></div>
+			</div>
+			</a>
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Completed Projects</div>
+				<div class="numbers" id="cpro"></div>
+			</div>
+			</a>
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Inprogress Projects</div>
+				<div class="numbers" id="inpro"></div>
+			</div>
+			</a>
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Total Tasks</div>
+				<div class="numbers" id="ttask"></div>
+			</div>
+			</a>
+			<br><br>
+			
+     	</td>
+	</tr>
+	
+</table>
+</center>
+    
+    
+  
+    </div>
+    
+    
+    
+  </div>
+ <div class="panel panel-default ">
+    <div class="panel-heading">
+              <select name="sProject" id="sProject" class="form-control"required="required"/>
+                            <option>Select Project</option>
+                            
+                         </select>
+     </div>
+    <div class="panel-body">
+    
+<center>
+<table id="datatable" border="0">
+	<tr>
+		<td width="50%">
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Total Tasks</div>
+				<div class="numbers" id="ptask">0</div>
+				
+			</div>
+			</a>
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Total Employess</div>
+				<div class="numbers" id="pemp">0</div>
+			</div>
+			</a>
+			<a href=#">
+			<div class="statistic">
+				<div class="title">Inprogress Tasks</div>
+				<div class="numbers" id="pinpro">0</div>
+			</div>
+			</a>
+			<a href="#">
+			<div class="statistic">
+				<div class="title">Completed Tasks</div>
+				<div class="numbers col-sm-2" id="ctask">0 </div>
+				
+			</div>
+			</a>
+			
+			
+			
+     	</td>
+	</tr>
+	
+	
+</table>
+</center>
+	</div>
+  </div>
+
+</div>
+
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading"><center>Graphical View</center></div>
+  <div class="panel-body">
+  
+  
+  <div class="row">
+  
+  <div class="col-sm-2">
+  
+  
+  </div>
+  <div class="col-sm-8">
+  
+  
+	          <div class="form-group">	
+                    <label  class="col-sm-2">Chart Style</label>			
+                    <div class="col-sm-4">
+                         <select name="s" id="s" class="form-control"required="required"/>
+                            <option value="Select">Select</option>
+                                             <option value="column">column</option>
+                   
+                                    <option value="bar">bar</option>
+                                        <option value="area">area</option>
+                                         <option value="spline">spline</option>
+                                         <option value="pie">pie</option>
+                            
+							
+                            
+                            
+                         </select>
+                    
+                    </div>
+              </div>	
+			 
+  <br><br><br><br>
+  
+  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="js/canvas.min.js"> </script>
+  
+  </div>
+  
+  <div class="col-sm-2"></div>
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+</div>
+</div>
+
+
+
+
+</body>
+</html>

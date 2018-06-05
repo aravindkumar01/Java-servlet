@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <script src="js\sweetalert.min.js"></script>
+  <script src="js\sweet2.js"></script>
+  <link rel="stylesheet" href="css\sweet.css">
+  
+  </head>
+
+
+<body>
+  
+ <!--  <script>
+  sweetAlert("Wrong user!", "Try again", "error");
+  
+  window.location.href="index.html";
+  </script>
+  -->
+  
+  <script type="text/javascript">
+  setTimeout(function () { 
+	  swal({
+	    title: "Wrong User!",
+	    text: "Try Again!",
+	    type: "error",
+	    confirmButtonText: "OK"
+	  },
+	  function(isConfirm){
+	    if (isConfirm) {
+	      window.location.href = "index.html";
+	    }
+	  }); }); </script>
+</body>
+
+</html>

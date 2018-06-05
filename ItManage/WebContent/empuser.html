@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Employee</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/overbootstrap.min.css">
+
+<script src="js/overjquery.min.js"></script>
+<script src="js/overbootstrap.min.js"></script>
+
+
+
+<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+
+<script type="text/javascript" src="js/jdatatable/jdatatable1.js"></script>
+
+<script type="text/javascript"
+	src="js/jdatatable/jquery.dataTables2.min.js"></script>
+
+<!-- <script language="javascript" type="text/javascript" src="js/asd.js"></script>
+ -->
+<script type="text/javascript" src="js/empuser.js"></script>
+
+
+<script>
+</script>
+
+</head>
+
+<body>
+	<div class="container-fluid" >
+
+		<br>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" id="name" href="#">KGISL</a>
+				</div>
+				<ul class="nav navbar-nav pull-right">
+ <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="updateProfile.html">Edit Profile</a></li>
+          <li><a href="index.html">Logout</a></li>
+         
+        </ul>
+      </li>
+       
+				</ul>
+			</div>
+		</nav>
+
+
+
+
+
+		<div class="row">
+			<div class="col-xs-2"></div>
+
+			<div class="col-xs-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="form-group">
+							<label class="col-sm-2">Project</label>
+							<div class="col-sm-4">
+								<select name="selectpro" id="selectpro" class="form-control"
+									required="required" />
+								<option>Select</option>
+
+								</select>
+
+							</div>
+						</div>
+						<br>
+					</div>
+					<div class="panel-body">
+
+
+						<table id="example" class="display" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Id</th>
+								    <th>Task_name</th>
+									<th>Status</th>
+									<th>Subject</th>
+									<th>Assignee</th>
+									<th>Start date</th>
+									<th>Author</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+
+									<th>Id</th>
+										<th>Task_name</th>
+									<th>Status</th>
+									<th>Subject</th>
+									<th>Assignee</th>
+									<th>Start date</th>
+									<th>Author</th>
+								</tr>
+							</tfoot>
+							<tbody id="td">
+
+
+
+							</tbody>
+						</table>
+
+
+
+
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="col-xs-2"></div>
+
+
+
+
+		</div>
+	</div>
+
+</body>
+
+
+</html>

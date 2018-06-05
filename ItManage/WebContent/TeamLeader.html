@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Project</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/overbootstrap.min.css">
+<script src="js/overjquery.min.js"></script>
+
+<script src="js/overbootstrap.min.js"></script>
+<script src="js/overjquery.min.js"></script>
+<script src="js/TeamLeader.js"></script>
+<script src="js\sweetalert.min.js"></script>
+  <script src="js\sweet2.js"></script>
+  <link rel="stylesheet" href="css\sweet.css">
+  
+<script>
+
+function vaildation()
+{
+	var s=$("#numEmp").val();
+	//alert(s);
+	if(s==="Select")
+		{
+		
+	    sweetAlert("Select!", "No of employees", "error");	
+	    return false;
+		}
+	else
+		{
+		return true;
+		}
+	
+	
+	}
+
+
+</script>
+</head>
+
+
+<body>
+
+
+	<br>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" id="name" href="#">KGISL</a>
+			</div>
+			<ul class="nav navbar-nav pull-right">
+		 <li><a href="TeamLeader.html">Add Project</a></li>
+      <li><a href="AssignTask.html">Assign Task</a></li>
+ <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="updateProfile.html">Edit Profile</a></li>
+          <li><a href="index.html">Logout</a></li>
+         
+        </ul>
+      </li>
+            
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-xs-2"></div>
+
+			<form action="AddProject" method="post" onSubmit="return vaildation()">
+				<div class="col-xs-8">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<center>Add project</center>
+						</div>
+						<div class="panel-body">
+
+
+
+
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Name</label>
+								<div class="col-sm-4">
+									<input type="text" name="pname" id="pname"
+										placeholder="Project Name" class="form-control"
+										required="required" />
+								</div>
+							</div>
+
+							<br>
+							<br>
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Description</label>
+								<div class="col-sm-4">
+									<textarea class="form-control" id="pdes" name="pdes"
+										placeholder="Description"></textarea>
+								</div>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<div class="form-group">
+								<label class="col-sm-2">No.Of.Employess</label>
+								<div class="col-sm-4">
+									<select name="numEmp" id="numEmp" class="form-control"
+										required="required" />
+									<option value="Select">Select</option>
+
+									</select>
+
+								</div>
+							</div>
+
+							<br>
+							<div class="form-group">
+								<div id="c"></div>
+							</div>
+
+
+
+							<br>
+							<br>
+							<br>
+
+							<div class="form-group">
+								<div class="col-md-2 col-sm-offset-3">
+									<button type="submit" class="btn btn-info">Submit</button>
+								</div>
+							</div>
+
+
+
+
+
+
+						</div>
+
+					</div>
+				</div>
+		</div>
+		</form>
+
+		<div class="col-xs-2"></div>
+
+
+	</div>
+	</div>
+
+
+
+</body>
+</html>

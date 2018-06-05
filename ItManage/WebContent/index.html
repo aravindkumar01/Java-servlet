@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Login</title>
+ 
+<meta charset="utf-8">
+ <link rel="stylesheet" href="css/overbootstrap.min.css">
+  
+ <script src="js/overjquery.min.js"></script>
+   <script src="js/overbootstrap.min.js"></script>
+   <script type="text/javascript" src="js/date_time.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+  
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header" >
+      <a class="navbar-brand" id="name" href="#">KGISL</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+      <li class="active" id="date_time"><a href="#"></a></li>
+	  <script type="text/javascript">window.onload = date_time('date_time');</script>
+    </ul>
+  </div>
+</nav>                                                                                                         
+                                                                        
+  <section  class="container-fluid">
+
+    <div class="row section-banner" >
+      <div class="col-md-offset-3 col-md-6 text-center">
+        <div>
+          <span class="line about"></span>
+          <span class="line "></span>
+        </div>
+      </div>
+    </div>
+
+
+    <div  class="row max" id="a">
+	
+      <div class="col-sm-4 ">
+      
+      
+      
+      
+      
+      </div>
+
+      <div class="col-sm-4 a" id="a">      
+         <form class="form-signin" action="Login" method="post">
+            <h3 class="form-signin-heading">
+
+                <img src="img/images.jpg" id="img"  alt="Alternate Text" />
+                <br />
+                <b style="color:black">KGISL</b>
+            </h3>
+
+            <input type="text" class="form-control"id="user" name="u_name" placeholder="Username" required="" autofocus="" /><br />
+            <input type="password" class="form-control" id=" #password" name="u_pass" placeholder="Password" required="" /><br/>
+              <div id="error">  <p></p></div> 
+            <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit">Login</button>
+            
+        </form>
+        
+           </div>
+<div class="col-sm-4  a" id="a">      
+                  </div>
+      
+
+    </div>
+
+
+  </section>
+<!-- 
+
+<script type="text/javascript">!function(t,e){"use strict";var r=function(t){try{var r=e.head||e.getElementsByTagName("head")[0],a=e.createElement("script");a.setAttribute("type","text/javascript"),a.setAttribute("src",t),r.appendChild(a)}catch(t){}};t.CollectId = "5acdac356203849f0c83d420",r("https://s3.amazonaws.com/collectchat/launcher.js")}(window,document);</script>
+
+ -->
+ 
+ <script defer>
+  function codeAddress() {
+	chatteron.init({
+	clientID: "b878bffcac1fa75e560b797a2cff2ae19eb3d15d85cddabe",
+	themeColor       : "3295e6",
+	title            : "Chat here"
+  });
+}
+</script>
+<script defer src="https://web.chatteron.io/scripts/sdk.js" onload="codeAddress();">
+</script>
+
+</body>
+
+</html>

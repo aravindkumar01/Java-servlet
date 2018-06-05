@@ -1,0 +1,190 @@
+<html>
+<head><title>Regis</title>
+
+<style>
+#pan{
+color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+
+
+}
+
+
+</style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/overbootstrap.min.css">
+  
+ <script src="js/overjquery.min.js"></script>
+   <script src="js/overbootstrap.min.js"></script>
+  
+ <script type="text/javascript" src="js/admin.js"></script>
+
+  <script src="js\sweetalert.min.js"></script>
+  <script src="js\sweet2.js"></script>
+  <link rel="stylesheet" href="css\sweet.css">
+  
+   
+</head>
+
+<body>
+
+<br><br>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" id="name" href="#">KGISL</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+    
+          <li><a href="Dashboard.html">DashBoard</a></li>
+      
+        <li><a href="ViewEmployee.html">ViewEmployee</a></li>
+      
+       <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">AddNew
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="admin.html">Division</a></li>
+          <li><a href="registration.html">Employee</a></li>
+         
+        </ul>
+      </li>
+      
+      
+        <li><a href="index.html">Logout</a></li>
+         <!-- 
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="updateProfile.html">Edit Profile</a></li>
+         
+        </ul>
+      </li> -->
+             
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form action="AddDivition" method="post">
+
+<div class="container"><br>
+            <div class="panel panel-default">
+     
+         <div class="row">
+		 
+		 <div class="col-sm-2"></div>
+		 
+		  <div class="panel-body" id="pan">
+		 <div class="col-sm-8">
+		 
+		 
+                       <br>    <br>    <br>    <br>
+                <div class="form-group">				 
+                    <label  class="col-sm-1 control-label">Division</label>
+                    <div class="col-sm-4">
+					<select id="division" name="division" class="form-control" required="required">
+					        <option value="select">Select</option>                                
+                            <option value="add">Add</option>    
+                            
+							<!-- <option value="it">IT</option>    
+                            
+                            <option value="nonit">Non_IT</option>                      
+                             -->
+                        </select>
+						  </div>
+						           
+				</div> 		  
+                      <br><br>
+					  <div class="container" id="show">
+					  </div>
+					  
+					  
+					  
+					  
+					<div class="form-group " id="it" >				 
+                    <label  class="col-sm-1 control-label"> Departments </label><br>
+                    <div class="col-sm-4">
+					<select  class="form-control" id="department" required="required">
+					        <option value="select">Select</option>							
+                            <option value="add">Add</option>
+							<!-- <option value="gss">GSS</option>                             
+                            <option value="opensource">OpenSource</option>    
+                            <option   value="kgisl">KGISL</option>                      
+                             -->
+                        </select>
+						  </div>
+						   
+				</div> 		 
+				<br><br> 
+						<div class="form-group" id="itDepart" >				 
+                    <label  class="col-sm-1 control-label">Teams</label>
+                    <div class="col-sm-4">
+					<select  class="form-control" required="required" id="team">
+					        <option value="select">Select</option>
+							
+                            <option value="add">Add</option>
+							<!-- <option value="bpo">Develop</option>   
+                             <option value="design">Design</option>               
+                            							
+                            <option value="testing">Testing</option>    
+                            <optionvalue="network">Network</option>                      
+                             -->
+                        </select>
+						  </div>
+						  
+        
+				</div>
+                    <br>  <br><br>
+					
+					
+					
+                
+					
+					
+					
+					
+					
+					
+            <!-- <center>    <button class="btn  btn-primary col-sm-1" id="addNew" name="Submit" id="Button"  type="Submit"  required="required"/>ADD</button>
+
+		
+                    </center>
+ -->
+
+</div>
+		 </div>
+		 
+		 
+		 </div>
+		 
+		 
+		 <div class="col-sm-2"></div>
+		 
+		 
+		 
+		 </div>
+		 </div>
+
+
+</form>
+
+</body>
+
+</html>

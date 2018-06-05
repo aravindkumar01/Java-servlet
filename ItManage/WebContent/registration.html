@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<style>body {
+	background: url("http://www.kgkite.ac.in/wp-content/uploads/2016/02/in6-1.jpg");
+	background-size:100%;
+	padding-top:20px;
+}</style>
+<head>
+
+<title>Register</title>
+
+<meta charset="utf-8">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/overbootstrap.min.css">
+  
+ <script src="js/overjquery.min.js"></script>
+   <script src="js/overbootstrap.min.js"></script>
+    <script type="text/javascript" src="js/registration.js"></script>
+    
+  <script src="js\sweetalert.min.js"></script>
+  <script src="js\sweet2.js"></script>
+  <link rel="stylesheet" href="css\sweet.css">
+  
+    
+    <script type="text/javascript">
+    
+    
+    $(document).ready(function () {
+    	
+    	
+    	var now = new Date(),
+        maxDate = now.toISOString().substring(0,10);
+
+    $('#doj').prop('max', maxDate);
+    	
+    });
+    
+    	
+    	function validateForm()
+    {
+    	
+    	var pass=$("#password").val();
+    	var con=$("#cPassword").val();
+    	//alert(pass);
+    	//alert(con);
+    if(pass==con)
+    	{
+    	return true;
+    	}
+    else
+    	{
+    	swal("Password!", "Does not match !", "error")
+    	return false;
+    	}
+    	
+    }
+
+
+    	
+    	function select()
+    {
+    	
+    	var gender=$("#selectGender option:selected").text();
+        var des=$("#selectDes   option:selected").text();
+        var divi=$("#selectDiv option:selected").text();
+        var dep=$("#selectDep option:selected").text();
+        var team=$("#selectTeam  option:selected").text();
+    //	alert(gender);
+    	//alert(des);
+    	//alert(divi);
+    	//alert(dep);
+    	//alert(team);
+        if(gender==="Select" || des==="Select" || divi==="Select" || dep==="Select" || team==="Select")
+        	{
+
+
+        	swal("Select!", "The Required boxes properly!", "error");
+       // 	$("#userName").empty();
+        	//alert("no");
+              return false;        	
+        	}
+        else
+        	{
+        	   var vaild=validateForm();
+        	   if(vaild)
+        		   {
+        		   return true;
+        	        	   
+        		   }
+        	   else
+        		   {
+        		   return false;
+        		   }
+        		}
+        
+        
+    }
+
+    </script>
+ 
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" id="name" href="#">KGISL</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+     
+         
+          <li><a href="Dashboard.html">DashBoard</a></li>
+      
+        <li><a href="ViewEmployee.html">ViewEmployee</a></li>
+      
+       <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">AddNew
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="admin.html">Division</a></li>
+          <li><a href="registration.html">Employee</a></li>
+         
+        </ul>
+      </li>
+      
+        <li><a href="index.html">Logout</a></li>
+        
+       
+        <!-- <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="updateProfile.html">Edit Profile</a></li>
+         
+        </ul>
+      </li>
+         -->    
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+ <section id="as" class="container-fluid">
+
+    <div class="row section-banner" >
+      <div class="col-md-offset-3 col-md-6 text-center">
+        <div>
+          <span class="line about"></span>
+          <span class="line about"></span>
+        </div>
+      </div>
+    </div>
+
+<br>
+    <div  class="row max" >
+	  
+       <div class="container ">
+         
+  <div class="panel panel-default">
+    <div class="panel-heading">REGISTRATION</div>
+            <form class="form-horizontal" role="form" action="NewEmployee" method="post"    onSubmit="return select()" >
+       <div class="panel-body">
+       
+    <div class="col-sm-6 text-center">      
+       <div class="form-group">
+                    <label for="eempId" class="col-sm-3 control-label">ID NUMBER</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="idNum" name="idNum" placeholder="ID NUMBER" class="form-control" required="required" autofocus>
+                       
+                    </div>
+                </div>
+				
+				
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control" required="required" autofocus>
+                       
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="lastName" id="lastName" placeholder="Last Name" class="form-control" required="required" autofocus>
+                       
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label for="UserName" class="col-sm-3 control-label">Date-Of-Brith</label>
+                    <div class="col-sm-4">
+                        <input type="date" id="dob" name="dob"  class="form-control" required="required"  autofocus>
+                       
+                    </div>
+                </div>
+    
+    
+    
+                 <div class="form-group">
+                    <label for="gender" class="col-sm-3 control-label">Gender</label>
+                    <div class="col-sm-4">
+					<select id="selectGender" class="form-control" name="selectGender" required="required">
+                            <option value="Select">Select</option>                            
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="Trancegender">Trancegender</option>
+                            
+                        </select>
+                    
+					
+                        </div>
+                </div> 
+				
+       
+			   <div class="form-group">
+                    <label for="doj" class="col-sm-3 control-label">Date-Of-Join</label>
+                    <div class="col-sm-4">
+                        <input type="date" name="doj" id="doj"   class="form-control datepicker" required="required"  autofocus>
+                       
+                    </div>
+                </div>
+               
+			   
+			   
+				<div class="form-group">
+                    <label for="UserName" class="col-sm-3 control-label">UserName</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="userName" name="userName" placeholder="UserName" class="form-control" required="required"  autofocus>
+                       
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-4">
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="required">
+                    </div>
+                </div>
+				 
+           </div>
+      
+<div class="col-sm-6 " id="m">    
+  
+    <div class="form-group">
+                    <label for="Confirm Password" class="col-sm-3 control-label">Confirm Password</label>
+                    <div class="col-sm-4">
+                        <input type="password" name="cPassword" id="cPassword" placeholder="Confirm Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control" required="required">
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label  class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-4">
+					 <input type="email" id="Email" name="Email" placeholder="Email" title="Contact's email (format: xxx@xxx.xxx)" 
+                        pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" class="form-control" required="required">                 
+					
+					
+                        </div>
+                </div> 
+				<div class="form-group">
+                    <label for="des" class="col-sm-3 control-label">Designation</label>
+                    <div class="col-sm-4">
+					<select  name="selectDes"  id="selectDes" class="form-control"required="required">
+                            <option value="Select">Select</option>
+                            <option value="manager">Manager</option>
+                            <option value="team leader">Team Leader</option>
+                            <option value="employee">Employee</option>
+                            
+                        </select>
+                    
+					
+                        </div>
+                </div> 
+				
+				<div class="form-group">
+                    <label for="divName" class="col-sm-3 control-label">Division</label>
+                    <div class="col-sm-4">
+                        <select  name="selectDiv" id="selectDiv" class="form-control"required="required">
+                            <option value="Select">Select</option>
+                            
+                        </select>
+                    
+                    </div>
+                </div>
+				
+               <div class="form-group">
+                    <label for="depName" class="col-sm-3 control-label">Department</label>
+                    <div class="col-sm-4">
+                        <select name="selectDep" id="selectDep" class="form-control"required="required">
+                            <option value="Select">Select</option>
+                            
+                        </select>
+                    
+                    </div>
+                </div>
+				
+               <div class="form-group">
+                    <label for="teamName" class="col-sm-3 control-label">Team</label>
+                    <div class="col-sm-4">
+                        <select name="selectTeam" id="selectTeam" class="form-control"required="required">
+                            <option value="Select">Select</option>
+                            
+                        </select>
+                    
+                    </div>
+                </div>
+				
+               
+               
+               
+               
+               
+               
+               
+               
+               
+				<div class="form-group">
+                    <label for="Address" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-4">
+                        <textarea class="form-control" id="address"  name="address"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2 col-sm-offset-3">
+                        <button type="submit" class="btn btn-info"  >Submit</button>
+                    </div>
+                </div>
+         </div></div></form></div></div>
+
+  
+    </div>
+   
+
+
+  </section>
+</body>
+</html>
